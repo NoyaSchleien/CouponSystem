@@ -1,0 +1,50 @@
+<img src="pic/getCustomerCouponsByType.jpg" style="margin-left:2%; margin-top:1%"><br><br>
+
+<!-- Retrieving the constraint from the client -->
+<form style="margin-left:2%; margin-top:1%" >
+<h3>Get Customer's Coupons of type </h3>
+   <select ng-model="gccbt.type" ng-change="gccbt.getCustomerCouponsByType()">
+            <option value="">---Please select---</option>
+            <option value="RESTAURANTS">RESTAURANTS</option>
+            <option value="ELECTRICITY">ELECTRICITY</option>
+            <option value="FOOD">FOOD</option>
+            <option value="HEALTH">HEALTH</option>
+            <option value="SPORTS">SPORTS</option>
+            <option value="CAMPING">CAMPING</option>
+            <option value="TRAVELING">TRAVELING</option>
+            <option value="CULTURE">CULTURE</option>
+            </select>
+</form>
+<hr/>
+
+<!-- Presenting data according to the constraint -->
+<div style="margin-left:2%" ng-if="gccbt.coupons.length==0 && gccbt.type!=''">
+    <h3  class="text2" style="margin-left:2%">No coupons were found !</h3>
+</div>
+<div class="w3-responsive" ng-if="gccbt.coupons.length>0">
+    <table class="w3-table-all" style="margin-left:2%" align="left">
+        <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>START DATE</th>
+            <th>END DATE</th>
+            <th>AMOUNT</th>
+            <th>TYPE</th>
+            <th>MESSAGE</th>
+            <th>PRICE</th>
+            <th>IMAGE</th>
+        </tr>
+
+        <tr ng-repeat="c in gccbt.coupons">
+            <td>{{c.couponId}}</td>
+            <td>{{c.title}}</td>
+            <td>{{c.startDate|date}}</td>
+            <td>{{c.endDate|date}}</td>
+            <td>{{c.amount}}</td>
+            <td>{{c.type}}</td>
+            <td>{{c.message}}</td>
+            <td>{{c.price}}</td>
+            <td><img ng-src="{{c.image}}" alt="Coupon Image" style="width:20%"></td>
+        </tr>
+    </table>
+</div>

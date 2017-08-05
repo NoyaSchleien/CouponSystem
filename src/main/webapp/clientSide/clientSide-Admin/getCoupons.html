@@ -1,0 +1,42 @@
+<img src="pic/getCoupons.jpg" style="margin-left:2%; margin-top:1%"><br><br>
+
+<!--  Radio buttons to choose a company from all the companies in the Coupon System -->
+<form class="w3-responsive" style="margin-left:2%">
+    <h1>Please choose a Company</h1>
+    <div ng-repeat="c in gCoups.companies">
+        <input class="w3-radio" type="radio" name="company" value="{{c.compId}}" ng-model="gCoups.id" ng-change="gCoups.getCoupons()"
+        />
+        <label>{{c.compId}} : {{c.compName}}</label><br/>
+    </div><br/><br/>
+</form>
+<hr/>
+
+<!--  The coupons of the company chosen. Presented in a table  -->
+<div style="margin-left: 2%; margin-top:1%" ng-if="gCoups.compCoupons">
+    <h1>This Company's Coupons are: </h1>
+    <table class="w3-table-all; w3-responsive" style="margin-left:2%" align="left" border="1px">
+        <tr>
+            <th> ID </th>
+            <th> TITLE </th>
+            <th> START DATE </th>
+            <th> END DATE </th>
+            <th> AMOUNT </th>
+            <th> TYPE </th>
+            <th> MESSAGE </th>
+            <th> PRICE </th>
+            <th> IMAGE </th>
+        </tr>
+        <tr ng-repeat="c in gCoups.compCoupons">
+            <td>{{c.couponId}}</td>
+            <td>{{c.title}}</td>
+            <td>{{c.startDate|date}}</td>
+            <td>{{c.endDate|date}}</td>
+            <td>{{c.amount}}</td>
+            <td>{{c.type}}</td>
+            <td>{{c.message}}</td>
+            <td>{{c.price}}</td>
+            <td><img ng-src="{{c.image}}" alt="Coupon Image" style="width:20%">
+            </td>
+        </tr>
+    </table>
+</div>

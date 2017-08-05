@@ -1,0 +1,22 @@
+<img src="pic/getCompany.jpg" style="margin-left:2%; margin-top:1%"><br><br>
+
+<h1 style="margin-left:2%; margin-top:1%">Your Company's Details : </h1>
+
+<!-- Get Company's Details -->
+<table class="w3-table-all; w3-responsive" style="margin-left:2%" align="left" border="1px">
+    <tr>
+        <th>ID </th>
+        <th>Name </th>
+        <th>Password </th>
+        <th>Email </th>
+    </tr>
+    <tr ng-if="gComp.companyAsked.compId">
+        <th>{{gComp.companyAsked.compId}}</th>
+        <th>{{gComp.companyAsked.compName}}</th>
+        <th>{{gComp.companyAsked.password}}</th>
+        <th>{{gComp.companyAsked.email}}</th>
+    </tr>
+</table>
+
+<!-- Angular custom directive -->
+<div  style="margin-top:10%; margin-left:10%" class="text2" personal-msg-directive></div>

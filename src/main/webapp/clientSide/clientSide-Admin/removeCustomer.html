@@ -1,0 +1,39 @@
+<img src="pic/removeCustomer.jpg" style="margin-left:2%; margin-top:1%"><br><br>
+<div style="margin-left:2%">
+    <h1> Please choose a Customer </h1>
+    
+       <!-- Radio buttons to choose a customer from all the customers in the Coupon System -->
+        <div ng-repeat="c in rCust.customers">
+        <input ng-change="rCust.success=false; rCust.failure=false" class="w3-radio" type="radio" name="customer" value="{{c.custId}}" ng-model="rCust.deletedCustomer.custId"/>
+        <label>{{c.custId}} : {{c.custName}}</label><br/>
+    </div><br/><br/>
+    <div class="container">
+         <button title="{{!rCust.deletedCustomer.custId?'please choose':''}}" ng-disabled="!rCust.deletedCustomer.custId" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Delete Customer</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Remove Customer</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this customer?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="rCust.removeCustomer()">Delete Customer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div style="margin-left:20%" ng-if="rCust.customers.length===0"><h3 class="text2">No more Customers left !</h3></div>
+
+<!-- Confirmation -->
+<div style="margin-left:2%">
+    <p ng-show="rCust.success" style="color:green; margin-left:2%">The customer was deleted Successfully!</p>
+    <p ng-show="rCust.failure" style="color:red; margin-left:2%">The customer was NOT deleted!</p>
+</div>
+    </div>

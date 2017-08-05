@@ -1,0 +1,68 @@
+<img src="pic/getAllCoupons.jpg" style="margin-left: 2%; margin-top: 1%">
+<br>
+<br>
+
+<!-- Carousel of coupons' images -->
+<div class="container">
+	<div id="couponCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="pic/viewAllCoupons.jpg" alt="View All Coupons"
+					style="width: 100%;">
+				<div class="carousel-caption">
+					<h3>View All Coupons</h3>
+				</div>
+			</div>
+
+			<div class="item" ng-repeat="c in gaCoups.coupons">
+				<img ng-src="{{c.image}}" alt="Coupon Image" style="width: 100%"/>
+				<div class="carousel-caption">
+					<h3>{{c.title}}</h3>
+				</div>
+			</div>
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#couponCarousel"
+			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="sr-only">Previous</span>
+		</a> 
+		<a class="right carousel-control" href="#couponCarousel"
+			data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right"></span> <span
+			class="sr-only">Next</span>
+		</a>
+	</div>
+</div>
+<br/><br/>
+
+<!-- Table with all the coupons in the Coupon System -->
+<h3 class="text2" style="margin-left: 2%">Here are all the coupons in the Coupon System</h3>
+<br/>
+<table class="w3-table-all; w3-responsive" style="margin-left: 2%"
+	align="left" border="1px">
+	<tr>
+		<th>ID</th>
+		<th>TITLE</th>
+		<th>START DATE</th>
+		<th>END DATE</th>
+		<th>AMOUNT</th>
+		<th>TYPE</th>
+		<th>MESSAGE</th>
+		<th>PRICE</th>
+		<th>IMAGE</th>
+	</tr>
+	<tr ng-repeat="c in gaCoups.coupons">
+		<td>{{c.couponId}}</td>
+		<td>{{c.title}}</td>
+		<td>{{c.startDate|date}}</td>
+		<td>{{c.endDate|date}}</td>
+		<td>{{c.amount}}</td>
+		<td>{{c.type}}</td>
+		<td>{{c.message}}</td>
+		<td>{{c.price}}</td>
+		<td><img ng-src="{{c.image}}" alt="Coupon Image"
+			style="width: 20%" /></td>
+	</tr>
+</table>

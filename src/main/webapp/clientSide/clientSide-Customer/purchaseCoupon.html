@@ -1,0 +1,48 @@
+<img src="pic/purchaseCoupon.jpg" style="margin-left:2%; margin-top:1%" /><br><br>
+
+<!-- Radio buttons to choose a coupon from the coupons that are available and valid for purchase, by this specific customer -->
+<div style="margin-left:2%" align="left">
+    <h1 class="text2"> Please choose a coupon </h1>
+
+    <div ng-show="!pCoup.noCouponsLeft">
+        <div ng-repeat="c in pCoup.availableCoupons">
+        <input class="w3-radio" type="radio" name="coupon" value="{{c}}" ng-model="pCoup.purchasedCoupon" ng-change="pCoup.success=false; pCoup.failure=flase""/>
+        <label>{{c.couponId}} : {{c.title}}</label><br/>
+    </div><br/><br/>
+   <div class="container">
+         <button title="{{!pCoup.purchasedCoupon?'please choose':''}}" ng-disabled="!pCoup.purchasedCoupon" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Buy</button>
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Purchase confirmation</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to purchase this coupon?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="pCoup.purchaseCoupon()">Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <div ng-show="pCoup.noCouponsLeft">
+    <h2>There are no more available valid coupons left for you to purchase !</h2>
+    </div>
+
+<!-- Confirmation -->
+<div>
+    <p ng-show="pCoup.success" style="color:green; margin-left:2%">The Coupon was purchased Successfully!</p>
+    <p ng-show="pCoup.failure" style="color:red; margin-left:2%">Please choose a coupon first</p>
+</div>
+
+</div>
+
+
+

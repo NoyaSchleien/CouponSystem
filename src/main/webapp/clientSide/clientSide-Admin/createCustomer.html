@@ -1,0 +1,27 @@
+<img src="pic/createCustomer.jpg" style="margin-left:2%; margin-top:1%" /><br/><br/>
+<!-- Create Customer form -->
+<form class="w3-responsive" name="theForm" style="margin-left: 2%; margin-top: 1%">
+    <table class="w3-table-all" style="margin-left:2%" align="left">
+        <tr>
+            <th align="left">Name : <br/></th>
+            <th><input type="text" ng-model="cCust.newCustomer.custName" placeholder="Customer Name" maxlength="20" ng-keypress="cCust.success=false; cCust.failure=flase" required/><br/></th>
+        </tr>
+        <tr>
+            <th align="left">Password : <br/></th>
+            <th><input  onkeypress="return event.keyCode!=32" type="text" ng-model="cCust.newCustomer.password" placeholder="Customer Password" maxlength="12" required/><br/></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th><input type="submit" value="Create Customer" ng-click="cCust.createCustomer(theForm)" /><br/></th>
+        </tr>
+        <tr>
+            <th></th>
+            <!-- Confirmation of creation -->
+            <th>
+                <p name="confirmation" ng-show="cCust.success" style="color:green; margin-left:2%">The Customer was created Successfully!</p>
+                <p name="confirmation" ng-show="cCust.failure" style="color:red; margin-left:2%">The Customer was NOT created!</p>
+            </th>
+        </tr>
+
+    </table>
+</form>

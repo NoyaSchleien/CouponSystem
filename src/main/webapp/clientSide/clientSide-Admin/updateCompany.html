@@ -1,0 +1,55 @@
+<img src="pic/updateCompany.jpg" style="margin-left:2%; margin-top:1%" /><br/><br/>
+
+<div class="w3-responsive" style="margin-left:2%">
+    <h1>Please choose a Company</h1>
+    
+       <!-- Radio buttons to choose a company from all the companies in the Coupon System -->
+    <div ng-repeat="c in uComp.companies">
+        <input class="w3-radio" type="radio" name="company" value="{{c.compId}}" ng-model="uComp.id" ng-change="uComp.getCompany()"
+        />
+        <label>{{c.compId}} : {{c.compName}}</label><br/>
+    </div><br/><br/>
+</div>
+<hr/>
+
+<!-- Update dynamic form -->
+<div class="container">
+<form  name="theForm" class="w3-responsive" style="margin-left: 2%; margin-top:1%">
+    <h1>Update the details that you wish to change : </h1>
+    <table class="w3-table-all" style="margin-left:2%; margin-top:1%" align="left">
+        <tr>
+            <th align="left">ID : <br/></th>
+            <td>{{uComp.updatedCompany.compId}}<br/></td>
+        </tr>
+        <tr>
+            <th align="left">Name : <br/></th>
+            <td>{{uComp.updatedCompany.compName}}<br/></td>
+        </tr>
+        <tr>
+            <th align="left">Password: <br/></th>
+            <th><input type="text" onkeypress="return event.keyCode!=32" ng-model="uComp.updatedCompany.password" placeholder={{uComp.updatedCompany.password}} maxlength="12"
+                /><br/></th>
+        </tr>
+        <tr class="form-group"
+				ng-class="{
+			       'has-error':!theForm.email.$valid,
+				   'has-success':theForm.email.$valid
+				   }
+				   ">
+            <th align="left">Email: <br/></th>
+            <th><input type="email" name="email" class="form-control" maxlength="30" ng-model="uComp.updatedCompany.email" placeholder={{uComp.updatedCompany.email}} required/><pre
+						ng-if="!theForm.email.$valid && !theForm.email.$pristine">email not valid</pre><br/></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th><input type="submit" value="Update Company" ng-click="uComp.updateCompany(theForm)" /></th>
+        </tr>
+    </table>
+
+<!-- Confirmation -->
+<div>
+    <p ng-show="uComp.success" style="color:green; margin-left:2%">The Company was updated Successfully!</p>
+    <p ng-show="uComp.failure" style="color:red; margin-left:2%">The Company was NOT updated!</p>
+
+</div>
+</form>

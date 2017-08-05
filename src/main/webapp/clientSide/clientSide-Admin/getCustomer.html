@@ -1,0 +1,24 @@
+<img src="pic/getCustomer.jpg" style="margin-left:2%; margin-top:1%"><br><br>
+
+<!-- A dynamic form to retrieve an id from the client   -->
+<form style="margin-left:2%; margin-top:1%">
+    <h3>Please insert a customer's ID : </h3>
+<select ng-model="gCust.id" placeholder="Customer ID" ng-change="gCust.getCustomer()">
+<option ng-repeat="c in gCust.customers">{{c.custId}}</option>
+</select>
+</form>
+<hr/>
+
+<!-- Response with the details of the customer that the client asked for  -->
+<table class="w3-table-all; w3-responsive" style="margin-left:2%" align="left" border="1px">
+    <tr>
+        <th>ID </th>
+        <th>Name </th>
+        <th>Password </th>
+    </tr>
+    <tr ng-if="gCust.customerAsked.custId">
+        <td>{{gCust.customerAsked.custId}}</td>
+        <td>{{gCust.customerAsked.custName}}</td>
+        <td>{{gCust.customerAsked.password}}</td>
+    </tr>
+</table>

@@ -1,0 +1,31 @@
+<img src="pic/getAllPurchasedCoupons.jpg" style="margin-left:2%; margin-top:1%"/><br><br>
+   
+   <!-- A table with this customer's coupons -->
+<form style="margin-left: 2%; margin-top:1%" >
+    <h1>The coupons that you purchased are: </h1>
+    <table class="w3-table-all; w3-responsive" style="margin-left:2%" align="left" border="1px">
+        <tr>
+            <th> ID </th>
+            <th> TITLE </th>
+            <th> START DATE </th>
+            <th> END DATE </th>
+            <th> AMOUNT </th>
+            <th> TYPE </th>
+            <th> MESSAGE </th>
+            <th> PRICE </th>
+            <th> IMAGE </th>
+        </tr>
+        <tr ng-repeat="c in gapCoups.custCoupons">
+            <td>{{c.couponId}}</td>
+            <td>{{c.title}}</td>
+            <td>{{c.startDate|date}}</td>
+            <td>{{c.endDate|date}}</td>
+            <td>{{c.amount}}</td>
+            <td>{{c.type}}</td>
+            <td>{{c.message}}</td>
+            <td>{{c.price}}</td>
+            <td><img ng-src="{{c.image}}" alt="Coupon Image" style="width:20%"/>
+            </td>
+        </tr>
+    </table>
+</form>

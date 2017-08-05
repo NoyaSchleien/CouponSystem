@@ -1,0 +1,44 @@
+<img src="pic/updateCustomer.jpg" style="margin-left:2%; margin-top:1%" /><br/><br/>
+
+<div class="w3-responsive" style="margin-left:2%">
+    <h1>Please choose a Customer</h1>
+    
+           <!-- Radio buttons to choose a customer from all the customers in the Coupon System -->
+    <div ng-repeat="c in uCust.customers">
+        <input class="w3-radio" type="radio" name="customer" value="{{c.custId}}" ng-model="uCust.id" ng-change="uCust.getCustomer(); uCust.success=false; uCust.failure=flase"
+       />
+        <label>{{c.custId}} : {{c.custName}}</label><br/>
+    </div><br/><br/>
+</div>
+<hr/>
+
+<!-- Update dynamic form -->
+<form style="margin-left: 2%; margin-top:1%">
+    <h1>Update the details that you wish to change : </h1>
+    <table class="w3-table-all" style="margin-left:2%" align="left">
+        <tr>
+            <th align="left">ID : <br/></th>
+            <td>{{uCust.updatedCustomer.custId}}<br/></td>
+        </tr>
+        <tr>
+            <th align="left">Name : <br/></th>
+            <td>{{uCust.updatedCustomer.custName}}<br/></td>
+        </tr>
+        <tr>
+            <th align="left">Password : <br/></th>
+            <th><input type="text"  onkeypress="return event.keyCode!=32" maxlength="12" ng-model="uCust.updatedCustomer.password" placeholder={{uCust.updatedCustomer.password}}
+            required/><br/></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th><input type="submit" value="Update Customer" ng-click="uCust.updateCustomer()" /></th>
+        </tr>
+    </table>
+    
+    <!-- Confirmation -->
+        <div>
+        <p ng-show="uCust.success" style="color:green; margin-left:2%">The Customer was updated Successfully!</p>
+        <p ng-show="uCust.failure" style="color:red; margin-left:2%">The Customer was NOT updated!</p>
+    </div>
+
+</form>

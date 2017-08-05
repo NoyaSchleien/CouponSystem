@@ -1,0 +1,53 @@
+<img src="pic/createCompany.jpg" style="margin-left: 2%; margin-top: 1%" />
+<br />
+<br />
+<!-- Create Company form -->
+<div class="container">
+	<form name="theForm" class="w3-responsive"
+		style="margin-left: 2%; margin-top: 1%">
+		<table class="w3-table-all" style="margin-left: 2%; margin-top: 1%"
+			align="left">
+			<tr>
+				<th align="left">Name : <br /></th>
+				<th><input type="text" name="name"
+					ng-model="cComp.newCompany.compName" placeholder="Company Name" ng-keypress="cComp.success=false; cComp.failure=flase"
+					maxlength="20" required /><br /></th>
+			</tr>
+			<tr>
+				<th align="left">Password : <br /></th>
+				<th><input onkeypress="return event.keyCode!=32" type="text" name="password"
+					ng-model="cComp.newCompany.password" placeholder="Company Password"
+					maxlength="12" required /><br /></th>
+			</tr>
+			<tr class="form-group"
+				ng-class="{
+			       'has-error':!theForm.email.$valid,
+				   'has-success':theForm.email.$valid
+				   }
+				   ">
+				<th align="left">Email : <br /></th>
+				<th><input type="email" name="email" class="form-control"
+					ng-model="cComp.newCompany.email" placeholder="Company Email"
+					maxlength="30" required /> <pre
+						ng-if="!theForm.email.$valid && !theForm.email.$pristine">email not valid</pre><br /></th>
+			</tr>
+			<tr>
+				<th></th>
+				<th><input type="submit" value="Create Company"
+					ng-click="cComp.createCompany(theForm)" /></th>
+			</tr>
+			<tr>
+				<th></th>
+				<!-- Confirmation of creation -->
+				<th>
+					<p name="confirmation" ng-show="cComp.success"
+						style="color: green; margin-left: 2%">The Company was created
+						Successfully!</p>
+					<p name="confirmation" ng-show="cComp.failure"
+						style="color: red; margin-left: 2%">The Company was NOT
+						created!</p>
+				</th>
+			</tr>
+		</table>
+	</form>
+</div>

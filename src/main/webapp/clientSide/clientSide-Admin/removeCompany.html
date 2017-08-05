@@ -1,0 +1,39 @@
+<img src="pic/removeCompany.jpg" style="margin-left:2%; margin-top:1%"><br><br>
+<div style="margin-left:2%">
+    <h1> Please choose a Company </h1>
+   
+   <!-- Radio buttons to choose a company from all the companies in the Coupon System -->
+    <div ng-repeat="c in rComp.companies">
+        <input class="w3-radio" ng-change="rComp.success=false; rComp.failure=flase" type="radio" name="company" value="{{c.compId}}" ng-model="rComp.deletedCompany.compId" />
+        <label>{{c.compId}} : {{c.compName}}</label><br/>
+    </div><br/><br/>
+<div class="container">
+         <button title="{{!rComp.deletedCompany.compId?'please choose':''}}" ng-disabled="!rComp.deletedCompany.compId" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Delete Company</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Remove Company</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this company?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="rComp.removeCompany()">Delete Company</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div style="margin-left:20%" ng-if="rComp.companies.length===0"><h3 class="text2">No more Companies left !</h3></div>
+
+<!-- Confirmation -->
+<div style="margin-left:2%">
+    <p name="confirmation" ng-show="rComp.success" style="color:green; margin-left:2%">The company was deleted Successfully!</p>
+    <p name="confirmation" ng-show="rComp.failure" style="color:red; margin-left:2%">The company was NOT deleted!</p>
+</div>
+</div>

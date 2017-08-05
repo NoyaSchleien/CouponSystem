@@ -1,0 +1,82 @@
+<img src="pic/updateCoupon.jpg" style="margin-left: 2%; margin-top: 1%" />
+<br />
+<br />
+
+<!-- Radio buttons to choose a coupon from this company's coupons -->
+<div class="w3-responsive" style="margin-left: 2%">
+	<h1>Please choose a Coupon</h1>
+	<div ng-repeat="c in uCoup.coupons">
+		<input class="w3-radio" type="radio" name="coupon"
+			value="{{c.couponId}}" ng-model="uCoup.id"
+			ng-change="uCoup.getCoupon()" /> <label>{{c.couponId}}
+			: {{c.title}}</label><br />
+	</div>
+	<br />
+	<br />
+</div>
+<hr />
+
+<!-- A dynamic form for updating the coupon's details -->
+<form name="theForm" class="w3-responsive"
+	style="margin-left: 2%; margin-top: 1%" nf-if="uCoup.updatedCoupon">
+	<h1>Update the details that you wish to change :</h1>
+
+	<table class="w3-table-all" style="margin-left: 2%; margin-top: 1%"
+		align="left">
+		<tr>
+			<th align="left">ID : <br /></th>
+			<th>{{uCoup.updatedCoupon.couponId}}<br /></th>
+		</tr>
+		<tr>
+			<th align="left">Title : <br /></th>
+			<th>{{uCoup.updatedCoupon.title}}<br /></th>
+		</tr>
+		<tr>
+			<th align="left">Start Date : <br /></th>
+			<th>{{uCoup.updatedCoupon.startDate|date}}<br /></th>
+		</tr>
+		<th align="left">End Date : <br /></th>
+		<th>
+			<!-- <input type="date" ng-model="uCoup.date" value="{{uCoup.updatedCoupon.endDate}}"/> -->
+			<input value="{{uCoup.updatedCoupon.endDate}}"
+			type="text" id="datepicker"><br />
+			<p ng-show="uCoup.flagDate" style="color: red; margin-left: 2%">New
+				end date is not valid</p>
+		</th>
+
+		</tr>
+		<th align="left">Amount : <br /></th>
+		<th>{{uCoup.updatedCoupon.amount}}<br /></th>
+		</tr>
+		<th align="left">Type : <br /></th>
+		<th>{{uCoup.updatedCoupon.type}}<br /></th>
+
+		</tr>
+		<th align="left">Message : <br /></th>
+		<th>{{uCoup.updatedCoupon.message}}<br /></th>
+		</tr>
+		<th align="left">Price : <br /></th>
+		<th><input type="number"
+			ng-model=uCoup.updatedCoupon.price min="0" /><br />
+		<p ng-show="uCoup.flagPrice" style="color: red; margin-left: 2%">Price
+				cannot be negative</p></th>
+
+		</tr>
+		<th align="left">Image : <br /></th>
+		<th>{{uCoup.updatedCoupon.image}}<br /></th>
+		</tr>
+		<tr>
+			<th></th>
+			<th><input title="{{self.updatedCoupo.length == 0?'choose coupon':''}}" ng-disabled="self.updatedCoupo.length == 0" type="submit" value="Update Coupon"
+				ng-click="uCoup.updateCoupon(theForm)" /></th>
+		</tr>
+		<tr>
+	</table>
+	<div>
+		<p name="confirmation" ng-show="uCoup.success"
+			style="color: green; margin-left: 2%">The Coupon was updated
+			Successfully!</p>
+		<p name="confirmation" ng-show="uCoup.failure"
+			style="color: red; margin-left: 2%">The Coupon was NOT updated!</p>
+	</div>
+</form>

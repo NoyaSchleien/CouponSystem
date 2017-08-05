@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html ng-app="companyApp">
+<head>
+<script src="../angular.js"></script>
+<script src="../angular-ui-router.js"></script>
+
+<script src="bootstrap.js"></script>
+<script src="../jquery-3.2.1.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">   
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+<script src="data.service.js"></script>
+
+<script src="route.config.js"></script>
+<script src="createCoupon.ctrl.js"></script>
+<script src="removeCoupon.ctrl.js"></script>
+<script src="updateCoupon.ctrl.js"></script>
+<script src="getCompany.ctrl.js"></script>
+<script src="getCoupon.ctrl.js"></script>
+<script src="getCoupons.ctrl.js"></script>
+<script src="getCompanyCouponsByType.ctrl.js"></script>
+<script src="getCompanyCouponsByPrice.ctrl.js"></script>
+<script src="getCompanyCouponsByDate.ctrl.js"></script>
+
+
+
+
+<title>Company Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../css.css">
+
+</head>
+<body>
+
+	<!-- Side bar -->
+	<div class="w3-sidebar w3-blue w3-bar-block" style="width: 15%">
+	<!-- Logo -->
+		<div class="w3-white">
+			<img src="../pic/logo.jpg" class="w3-image" alt="Coupon System">
+		</div>
+		<h3 class="w3-bar-item">Menu</h3>
+		<hr />
+
+<!-- Side bar options -->
+		<a href="#/createCoupon" class="w3-bar-item w3-button">Create
+			Coupon</a> <a href="#/removeCoupon" class="w3-bar-item w3-button">Remove
+			Coupon</a> <a href="#/updateCoupon" class="w3-bar-item w3-button">Update
+			Coupon</a> <a href="#/getCompany" class="w3-bar-item w3-button">Get
+			Company</a> <a href="#/getCoupon" class="w3-bar-item w3-button">Get
+			Coupon</a> <a href="#/getCoupons" class="w3-bar-item w3-button">Get
+			Coupons</a> <a href="#/getCompanyCouponsByType"
+			class="w3-bar-item w3-button">Get Company Coupons By Type</a> <a
+			href="#/getCompanyCouponsByPrice" class="w3-bar-item w3-button">Get
+			Company Coupons By Price</a> <a href="#/getCompanyCouponsByDate"
+			class="w3-bar-item w3-button">Get Company Coupons By Date</a>
+
+
+
+
+		<!-- Log out -->
+	</div>
+	<div class="w3-container w3-indigo w3-display-topright">
+		<a href="/Webapp/clientSide/logOut.html" class="w3-bar-item w3-button"
+			style="text-decoration: underline">Log Out</a>
+	</div>
+
+	<!-- Header -->
+	<div class="w3-container w3-indigo" style="margin-left: 15%">
+		<h1>Welcome Company</h1>
+	</div>
+
+	<!-- SPA -->
+	<div style="margin-left: 15%">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+		<div ui-view></div>
+
+	</div>
+
+</body>
+</html>

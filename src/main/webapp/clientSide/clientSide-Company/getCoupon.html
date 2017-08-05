@@ -1,0 +1,61 @@
+<img src="pic/getCoupon.jpg" style="margin-left: 2%; margin-top: 1%">
+<br/>
+<br/>
+<!-- Radio buttons to choose one Coupon -->
+<div style="margin-left: 2%">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h1>Please choose a Coupon</h1>
+				<div ng-repeat="c in gCoup.compCoupons">
+					<input class="w3-radio" type="radio" name="coupon"
+						value="{{c.couponId}}" ng-model="gCoup.id"
+						ng-change="gCoup.getCoupon()" /> <label>{{c.couponId}}
+						: {{c.title}}</label><br />
+				</div>
+			</div>
+			
+			<!-- Coupon's image with drop down hover -->
+			<div class="col-md-6" ng-if="gCoup.couponAsked.couponId" align="center"
+					style="width: 20%">
+					<div class="w3-dropdown-hover">
+						<img ng-src="{{gCoup.couponAsked.image}}" alt="Coupon Image"
+							style="width: 100%" />
+						<div class="w3-dropdown-content" style="width: 200%">
+							<img ng-src="{{gCoup.couponAsked.image}}" alt="Coupon Image"
+								style="width: 100%" />
+						</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<hr/>
+
+<!-- Chosen coupon's details -->
+		<table class="w3-table-all; w3-responsive" style="margin-left: 2%"
+			align="left" border="1px" ng-if="gCoup.couponAsked.couponId">
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Amount</th>
+				<th>Type</th>
+				<th>Message</th>
+				<th>Price</th>
+				<th>Image</th>
+			</tr>
+			<tr>
+				<td>{{gCoup.couponAsked.couponId}}</td>
+				<td>{{gCoup.couponAsked.title}}</td>
+				<td>{{gCoup.couponAsked.startDate|date}}</td>
+				<td>{{gCoup.couponAsked.endDate|date}}</td>
+				<td>{{gCoup.couponAsked.amount}}</td>
+				<td>{{gCoup.couponAsked.type}}</td>
+				<td>{{gCoup.couponAsked.message}}</td>
+				<td>{{gCoup.couponAsked.price}}</td>
+				<td><img ng-src="{{gCoup.couponAsked.image}}"
+					alt="Coupon Image" style="width: 20%" /></td>
+			</tr>
+		</table>
+		</div>

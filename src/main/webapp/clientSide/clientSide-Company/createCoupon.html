@@ -1,0 +1,57 @@
+<img src="pic/createCoupon.jpg" style="margin-left:2%; margin-top:1%" /><br/><br/>
+
+<!-- Create Coupon form -->
+<form class="w3-responsive" name="theForm" style="margin-left:2%; margin-top:1%">
+    <table class="w3-table-all" style="margin-left:2%; margin-top:1%" align="left">
+        <tr>
+            <th align="left">Title : <br/></th>
+            <th><input  type="text" ng-model="cCoup.newCoupon.title" placeholder="Coupon Title" maxlength="20" ng-keypress="cCoup.success=false; cCoup.failure=flase" required/><br/></th>
+        </tr>
+        <tr>
+            <th align="left">Start Date : <br/></th>
+            <th><input type="date" ng-model="cCoup.newCoupon.startDate" placeholder="Coupon Start Date" /><br/></th>
+        </tr>
+        <th align="left">End Date : <br/></th>
+        <th><input type="date" ng-model="cCoup.newCoupon.endDate" placeholder="Coupon End Date" /><br/></th>
+        </tr>
+        <th align="left">Amount : <br/></th>
+        <th><input type="number" min="1" ng-model="cCoup.newCoupon.amount" placeholder="Coupon Amount" /><br/></th>
+        </tr>
+        <th align="left">Type : <br/></th>
+        <th> <select ng-model="cCoup.newCoupon.type">
+            <option value="">---Please select---</option>
+            <option value="RESTAURANTS">RESTAURANTS</option>
+            <option value="ELECTRICITY">ELECTRICITY</option>
+            <option value="FOOD">FOOD</option>
+            <option value="HEALTH">HEALTH</option>
+            <option value="SPORTS">SPORTS</option>
+            <option value="CAMPING">CAMPING</option>
+            <option value="TRAVELING">TRAVELING</option>
+            <option value="CULTURE">CULTURE</option>
+            </select>
+            <br/></th>
+        </tr>
+        <th align="left">Message : <br/></th>
+        <th><input type="text" ng-model="cCoup.newCoupon.message" placeholder="Coupon Message" maxlength="60" /><br/></th>
+        </tr>
+        <th align="left">Price : <br/></th>
+        <th><input type="number" min="0" ng-model="cCoup.newCoupon.price" placeholder="Coupon price" required/><br/></th>
+        </tr>
+        <th align="left">Image : <br/></th>
+        <th><input type="text" ng-model="cCoup.newCoupon.image" placeholder="Coupon Image" maxlength="30" /><br/></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th><input type="submit" value="Create Coupon" ng-click="cCoup.createCoupon(theForm)" /></th>
+        </tr>
+        <tr>
+            <th></th>
+            				<!-- Confirmation of creation -->
+            <th>
+                <p name="confirmation" ng-show="cCoup.success" style="color:green; margin-left:2%">The Coupon was created Successfully!</p>
+                <p name="confirmation" ng-show="cCoup.failure" style="color:red; margin-left:2%">The Coupon was NOT created!</p>
+            </th>
+        </tr>
+
+    </table>
+</form>

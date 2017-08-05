@@ -1,0 +1,39 @@
+<img src="pic/getCompany.jpg" style="margin-left: 2%; margin-top: 1%">
+<br>
+<br>
+
+<!-- A dynamic form to retrieve an id from the client   -->
+<form style="margin-left: 2%; margin-top: 1%">
+	<h3>Please insert a company's ID :</h3>
+	<input type="number" min="1" ng-model="gComp.id"
+		placeholder="Company ID" ng-model-options="{ debounce: 500 }"
+		ng-change="gComp.getCompany()" />
+	<div class="w3-dropdown-hover">
+		<h6>hint</h6>
+		<div class="w3-dropdown-content" style="width: 200%">
+			<span ng-repeat="c in gComp.companies">{{c.compId}},</span>
+
+		</div>
+	</div>
+</form>
+<hr />
+
+<!-- Response with the details of the company that the client asked for  -->
+<table class="w3-table-all; w3-responsive" style="margin-left: 2%"
+	align="left" border="1px">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Password</th>
+		<th>Email</th>
+	</tr>
+	<tr ng-if="gComp.companyAsked.compId">
+		<td>{{gComp.companyAsked.compId}}</td>
+		<td>{{gComp.companyAsked.compName}}</td>
+		<td>{{gComp.companyAsked.password}}</td>
+		<td>{{gComp.companyAsked.email}}</td>
+	</tr>
+</table>
+
+
+

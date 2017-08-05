@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="bootstrap.js"></script>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="prefixfree.js"></script>
+
+
+<!-- magnifying glass-->
+<script>
+	$(document).ready(
+			function() {
+				var native_width = 0;
+				var native_height = 0;
+				$(".magnify").mousemove(
+						function(e) {
+							if (!native_width && !native_height) {
+								var image_object = new Image();
+								image_object.src = $(".small").attr("src");
+
+								native_width = image_object.width;
+								native_height = image_object.height;
+							} else {
+								var magnify_offset = $(this).offset();
+								var mx = e.pageX - magnify_offset.left;
+								var my = e.pageY - magnify_offset.top;
+
+								if (mx < $(this).width()
+										&& my < $(this).height() && mx > 0
+										&& my > 0) {
+									$(".large").fadeIn(100);
+								} else {
+									$(".large").fadeOut(100);
+								}
+								if ($(".large").is(":visible")) {
+									var rx = Math.round(mx
+											/ $(".small").width()
+											* native_width
+											- $(".large").width() / 2)
+											* -1;
+									var ry = Math.round(my
+											/ $(".small").height()
+											* native_height
+											- $(".large").height() / 2)
+											* -1;
+									var bgp = rx + "px " + ry + "px";
+
+									var px = mx - $(".large").width() / 2;
+									var py = my - $(".large").height() / 2;
+
+									$(".large").css({
+										left : px,
+										top : py,
+										backgroundPosition : bgp
+									});
+								}
+							}
+						})
+			})
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="css.css">
+
+
+<title>Coupon System\logout</title>
+
+</head>
+<body>
+<!-- Logout page -->
+	<div class="container">
+		<div class="row">
+		<!-- magnifying glass-->
+			<div class="col-md-6">
+				<div class="magnify">
+					<!-- Image large version -->
+					<div class="large"></div>
+					<!-- Image small version -->
+					<img class="small" src="pic/magglass.jpg" alt="Coupon System Image" width=100%/>
+				</div>
+			</div>
+			
+			<!-- Cool animation -->
+			<div class="col-md-6">
+				<div class="loAnimation" id="borderImg2">
+					<div class="text4">Come back soon !</div>
+				</div>
+			</div>
+		</div>
+		<br /> <br /> <br /> <br /> <br /> <br />
+		<!-- Text -->
+		<div class="row">
+			<div class="col-md-6">
+				<h2 class="text2">Are you sure you want to say Goodbye?</h2>
+			</div>
+			<div class="col-md-6">
+				<h2 class="text2">or would you like to go back home?</h2>
+			</div>
+		</div>
+		<br /><br />
+		<div class="row">
+		<!-- Image of a teddy bear -->
+				<div class="col-md-6">
+				<img src="pic/logout.jpg" style="margin-top: 1%">
+				</div>
+			
+			<!--A fliping three-d button. Return to home page-->
+			<div class="col-md-4 col-md-offset-2" >
+				<ul class="block-menu">
+					<li><a href="index.html"
+						class="three-d"> Home Page <span aria-hidden="true"
+							class="three-d-box"> <span class="front">Home Page</span>
+								<span class="back">Home Page</span>
+						</span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

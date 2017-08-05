@@ -1,0 +1,15 @@
+<img src="pic/getAllCustomers.jpg" style="margin-left:2%; margin-top:1%"><br><br>
+
+<!-- Table with all customers in the Coupon System -->
+<table class="w3-table-all; w3-responsive" style="margin-left:2%" align="left" border="1px">
+    <tr>
+        <th>ID </th>
+        <th>Name </th>
+        <th>Password </th>
+    </tr>
+    <tr ng-repeat="c in gaCust.customers">
+        <td>{{c.custId}}</td>
+        <td>{{c.custName}}</td>
+        <td>{{c.password}}</td>
+    </tr>
+</table>

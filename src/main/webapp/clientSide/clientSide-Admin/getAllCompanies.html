@@ -1,0 +1,19 @@
+<img src="pic/getAllCompanies.jpg" style="margin-left:2%; margin-top:1%"><br><br>
+
+
+<!-- Table with all companies in the Coupon System -->
+<table class="w3-table-all; w3-responsive" style="margin-left:2%" align="left" border="1px">
+    <tr>
+        <th>ID </th>
+        <th>Name </th>
+        <th>Password </th>
+        <th>Email </th>
+    </tr>
+     <tr ng-repeat="c in gaComp.companies">
+   
+        <td>{{c.compId}}</td>
+        <td>{{c.compName}}</td>
+        <td>{{c.password}}</td>
+        <td>{{c.email}}</td>
+    </tr>
+</table>

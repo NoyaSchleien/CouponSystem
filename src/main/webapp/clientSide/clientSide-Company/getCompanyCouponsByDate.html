@@ -1,0 +1,48 @@
+<img src="pic/getCompanyCouponsByDate.jpg">
+<br>
+<br>
+
+<!-- Retrieving the constraint from the client -->
+<form style="margin-left: 2%; margin-top: 1%">
+	<h3>
+		Get Company's Coupons which expire no later than <input type="date"
+			ng-model="gccbd.date" placeholder="Coupon Max End Date"
+			ng-change="gccbd.getCompanyCouponsByDate()" />
+	</h3>
+</form>
+<hr />
+
+<!-- Presenting data according to the constraint -->
+<div style="margin-left: 2%"
+	ng-if="gccbd.coupons.length==0 && gccbd.date!=''">
+	<h3 style="margin-left: 2%" class="text2">No coupons were found !</h3>
+</div>
+
+<div class="w3-responsive" ng-if="gccbd.coupons.length>0">
+	<table class="w3-table-all" style="margin-left: 2%" align="left">
+		<tr>
+			<th>ID</th>
+			<th>TITLE</th>
+			<th>START DATE</th>
+			<th>END DATE</th>
+			<th>AMOUNT</th>
+			<th>TYPE</th>
+			<th>MESSAGE</th>
+			<th>PRICE</th>
+			<th>IMAGE</th>
+		</tr>
+
+		<tr ng-repeat="c in gccbd.coupons">
+			<td>{{c.couponId}}</td>
+			<td>{{c.title}}</td>
+			<td>{{c.startDate|date}}</td>
+			<td>{{c.endDate|date}}</td>
+			<td>{{c.amount}}</td>
+			<td>{{c.type}}</td>
+			<td>{{c.message}}</td>
+			<td>{{c.price}}</td>
+			<td><img ng-src="{{c.image}}" alt="Coupon Image"
+				style="width: 20%"></td>
+		</tr>
+	</table>
+</div>
